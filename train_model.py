@@ -8,7 +8,7 @@ import torch.nn.functional as F
 
 from data import TranslationDataset
 from transformers import BertTokenizerFast
-from transformers import BertModel, BertForMaskedLM, BertConfig, EncoderDecoderModel
+from transformers import BertModel, BertLMHeadModel, BertConfig, EncoderDecoderModel
 
 # Identify the config file
 if len(sys.argv) < 2:
@@ -75,7 +75,7 @@ decoder_config = BertConfig(vocab_size = vocabsize,
                     type_vocab_size = 1,
                     is_decoder=True)    # Very Important
 
-decoder = BertForMaskedLM(config=decoder_config)
+decoder = BertLMHeadModel(config=decoder_config)
 
 # Define encoder decoder model
 model = EncoderDecoderModel(encoder=encoder, decoder=decoder)
