@@ -121,7 +121,7 @@ def train_model():
 
         lm_labels = de_output.clone()
         out = model(input_ids=en_input, attention_mask=en_masks,
-                                        decoder_input_ids=de_output, decoder_attention_mask=de_masks,lm_labels=lm_labels)
+                                        decoder_input_ids=de_output, decoder_attention_mask=de_masks, labels=lm_labels)
         prediction_scores = out[1]
         predictions = F.log_softmax(prediction_scores, dim=2)
         loss = compute_loss(predictions, de_output)
@@ -150,7 +150,7 @@ def eval_model():
         lm_labels = de_output.clone()
 
         out = model(input_ids=en_input, attention_mask=en_masks,
-                                        decoder_input_ids=de_output, decoder_attention_mask=de_masks,lm_labels=lm_labels)
+                                        decoder_input_ids=de_output, decoder_attention_mask=de_masks,labels=lm_labels)
 
         prediction_scores = out[1]
         predictions = F.log_softmax(prediction_scores, dim=2)
