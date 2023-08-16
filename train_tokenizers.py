@@ -25,7 +25,7 @@ def train_tokenizer(filename, params):
     print("Saving tokenizer ...")
     if not os.path.exists(save_location):
         os.makedirs(save_location)
-    tokenizer.save(os.path.join(save_location, "vocab.txt"))
+    tokenizer.save_model(save_location)
 
 # Identify the config to use
 if len(sys.argv) < 2:
