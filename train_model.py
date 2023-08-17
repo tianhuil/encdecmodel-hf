@@ -45,11 +45,11 @@ dec_maxlength = decparams["max_length"]
 batch_size = modelparams["batch_size"]
 train_dataset = TranslationDataset(train_en_file, train_de_file, en_tokenizer, de_tokenizer, enc_maxlength, dec_maxlength)
 train_dataloader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=False, \
-                                                drop_last=True, num_workers=1, collate_fn=train_dataset.collate_function)
+                                                drop_last=True, collate_fn=train_dataset.collate_function)
 
 valid_dataset = TranslationDataset(valid_en_file, valid_de_file, en_tokenizer, de_tokenizer, enc_maxlength, dec_maxlength)
 valid_dataloader = torch.utils.data.DataLoader(dataset=valid_dataset, batch_size=batch_size, shuffle=False, \
-                                                drop_last=True, num_workers=1, collate_fn=valid_dataset.collate_function)
+                                                drop_last=True, collate_fn=valid_dataset.collate_function)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print("Using device:", device)
