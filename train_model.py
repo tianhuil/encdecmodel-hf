@@ -114,6 +114,9 @@ def train_model():
 
     for i, (en_input, en_masks, de_output, de_masks) in enumerate(tqdm(train_dataloader)):
 
+        if i > 200:
+            break
+
         optimizer.zero_grad()
 
         en_input = en_input.to(device)
@@ -141,6 +144,9 @@ def eval_model():
     epoch_loss = 0
 
     for i, (en_input, en_masks, de_output, de_masks) in enumerate(tqdm(train_dataloader)):
+
+        if i > 100:
+            break
 
         optimizer.zero_grad()
 
