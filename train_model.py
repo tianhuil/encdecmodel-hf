@@ -112,7 +112,7 @@ def train_model():
     model.train()
     epoch_loss = 0
 
-    for i, (en_input, en_masks, de_output, de_masks) in tqdm(enumerate(train_dataloader)):
+    for i, (en_input, en_masks, de_output, de_masks) in enumerate(tqdm(train_dataloader)):
 
         optimizer.zero_grad()
 
@@ -140,7 +140,7 @@ def eval_model():
     model.eval()
     epoch_loss = 0
 
-    for i, (en_input, en_masks, de_output, de_masks) in tqdm(enumerate(train_dataloader)):
+    for i, (en_input, en_masks, de_output, de_masks) in enumerate(tqdm(train_dataloader)):
 
         optimizer.zero_grad()
 
