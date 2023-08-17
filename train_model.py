@@ -9,6 +9,7 @@ import torch.nn.functional as F
 from data import TranslationDataset
 from transformers import BertTokenizerFast
 from transformers import BertModel, BertLMHeadModel, BertConfig, EncoderDecoderModel
+from tqdm import tqdm
 
 # Identify the config file
 if len(sys.argv) < 2:
@@ -111,7 +112,7 @@ def train_model():
     model.train()
     epoch_loss = 0
 
-    for i, (en_input, en_masks, de_output, de_masks) in enumerate(train_dataloader):
+    for i, (en_input, en_masks, de_output, de_masks) in tqdm(enumerate(train_dataloader)):
 
         optimizer.zero_grad()
 
@@ -139,7 +140,7 @@ def eval_model():
     model.eval()
     epoch_loss = 0
 
-    for i, (en_input, en_masks, de_output, de_masks) in enumerate(train_dataloader):
+    for i, (en_input, en_masks, de_output, de_masks) in tqdm(enumerate(train_dataloader)):
 
         optimizer.zero_grad()
 
